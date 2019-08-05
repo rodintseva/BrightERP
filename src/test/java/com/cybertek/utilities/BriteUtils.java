@@ -9,6 +9,7 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -559,6 +560,17 @@ public class BriteUtils {
 
     }
 
-
+    /**
+     * This method will navigate user to the specific module in vytrack application.
+     * For example: if tab is equals to Activities, and module equals to Calls,
+     * Then method will navigate user to this page: http://qa2.vytrack.com/call/
+     *
+     * @param module
+     */
+    public static void navigateToModule(String module){
+        Driver.getDriver().findElement(By.linkText(module)).click();
+        //SeleniumUtils.waitPlease(4);
+        Driver.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
 
 }
